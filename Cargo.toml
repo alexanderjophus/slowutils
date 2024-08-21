@@ -1,0 +1,47 @@
+[package]
+name = "slowutils"
+version = "0.0.1"
+edition = "2021"
+repository = "https://github.com/alexanderjophus/slowutils"
+
+
+[[bin]]
+name = "sl"
+path = "src/sl/bin/main.rs"
+
+[[bin]]
+name = "slowcat"
+path = "src/slowcat/bin/main.rs"
+
+# [[bin]]
+# name = "dokcer"
+# path = "src/docker/bin/main.rs"
+
+# [[bin]]
+# name = "gti"
+# path = "src/gti/bin/main.rs"
+
+[dependencies]
+clap = { version = "4.0", features = ["derive"] }
+crossterm = "0.27"
+signal-hook = "0.3.17"
+
+# The profile that 'cargo dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
+
+# Config for 'cargo dist'
+[workspace.metadata.dist]
+# The preferred cargo-dist version to use in CI (Cargo.toml SemVer syntax)
+cargo-dist-version = "0.21.0"
+# CI backends to support
+ci = "github"
+# The installers to generate for each app
+installers = ["shell"]
+# Target platforms to build apps for (Rust target-triple syntax)
+targets = ["aarch64-apple-darwin", "x86_64-apple-darwin", "x86_64-unknown-linux-gnu", "x86_64-pc-windows-msvc"]
+# Path that installers should place binaries in
+install-path = "CARGO_HOME"
+# Whether to install an updater program
+install-updater = true
