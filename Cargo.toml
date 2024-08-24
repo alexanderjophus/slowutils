@@ -23,7 +23,7 @@ path = "src/slowcat/bin/main.rs"
 
 [dependencies]
 clap = { version = "4.0", features = ["derive"] }
-crossterm = "0.27"
+crossterm = "0.28"
 signal-hook = "0.3.17"
 
 # The profile that 'cargo dist' will build with

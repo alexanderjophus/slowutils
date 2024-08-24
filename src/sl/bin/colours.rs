@@ -1,5 +1,6 @@
 use crossterm::style::Color;
 
+pub const BLACK: Color = Color::Rgb { r: 0, g: 0, b: 0 };
 pub const HOT_PINK: Color = Color::Rgb {
     r: 255,
     g: 105,
