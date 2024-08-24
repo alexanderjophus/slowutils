@@ -13,9 +13,9 @@ path = "src/sl/bin/main.rs"
 name = "slowcat"
 path = "src/slowcat/bin/main.rs"
 
-# [[bin]]
-# name = "dokcer"
-# path = "src/docker/bin/main.rs"
+[[bin]]
+name = "dokcer"
+path = "src/dokcer/bin/main.rs"
 
 # [[bin]]
 # name = "gti"
@@ -24,6 +24,9 @@ path = "src/slowcat/bin/main.rs"
 [dependencies]
 clap = { version = "4.0", features = ["derive"] }
 crossterm = "0.28"
+itertools = "0.13.0"
+noise = "0.9.0"
+rand = "0.8.5"
 signal-hook = "0.3.17"
 
 # The profile that 'cargo dist' will build with

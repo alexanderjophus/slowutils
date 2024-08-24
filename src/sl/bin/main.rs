@@ -39,13 +39,13 @@ const LOCO_LENGTH: i16 = 54;
 const COAL_LENGTH: i16 = 30;
 
 fn main() -> Result<(), Error> {
-    let term = Arc::new(AtomicBool::new(false));
-    signal_hook::flag::register(signal_hook::consts::SIGINT, Arc::clone(&term))?;
-
     let args = Args::parse();
 
     let (width, height) = size().expect("Unable to get terminal size");
     let colours = parse_flag(&args.flag);
+
+    let term = Arc::new(AtomicBool::new(false));
+    signal_hook::flag::register(signal_hook::consts::SIGINT, Arc::clone(&term))?;
 
     execute!(stdout(), Hide, DisableLineWrap).expect("Unable to hide cursor");
 
