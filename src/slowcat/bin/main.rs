@@ -15,15 +15,8 @@ struct Args {
 fn main() {
     let args = Args::parse();
 
-    let files: Vec<String> = std::env::args().collect();
-    if files.len() != 2 {
-        eprintln!("Usage: {} <filename>", files[0]);
-        std::process::exit(1);
-    }
-
-    let filename = &files[1];
     let contents =
-        std::fs::read_to_string(filename).expect("Something went wrong reading the file");
+        std::fs::read_to_string(args.file).expect("Something went wrong reading the file");
     for c in contents.chars() {
         print!("{}", c);
         std::io::stdout().flush().unwrap();
