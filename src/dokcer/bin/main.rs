@@ -1,4 +1,4 @@
-mod from;
+mod visualise;
 
 use core::time;
 use std::{
@@ -41,12 +41,13 @@ fn main() -> std::io::Result<()> {
     signal_hook::flag::register(signal_hook::consts::SIGINT, Arc::clone(&term))?;
 
     execute!(stdout(), Hide, DisableLineWrap).expect("Unable to hide cursor");
+    execute!(stdout(), Clear(ClearType::All)).expect("Unable to clear screen");
 
     contents.lines().for_each(|line| {
         if !line.trim().is_empty() || line.starts_with("#") {
             match get_instruction(line) {
                 (InstructionType::From, rem) => {
-                    from::visualise(seed, width as usize, height as usize, rem)
+                    visualise::from(seed, width as usize, height as usize, rem)
                 }
                 (x, _) => println!("unsupported instruction: {:?}", x),
             }

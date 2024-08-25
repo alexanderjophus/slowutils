@@ -28,6 +28,7 @@ itertools = "0.13.0"
 noise = "0.9.0"
 rand = "0.8.5"
 signal-hook = "0.3.17"
+unicode-segmentation = "1.11.0"
 
 # The profile that 'cargo dist' will build with
 [profile.dist]
